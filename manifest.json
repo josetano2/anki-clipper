@@ -1,0 +1,14 @@
+{
+  "name": "Anki Clipper",
+  "description": "A tool to mine sentences and insert it into Anki.",
+  "version": "1.1",
+  "manifest_version": 3,
+  "permissions": ["contextMenus", "scripting", "activeTab"],
+  "background": {
+    "service_worker": "anki.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "index.html"
+  }
+}
