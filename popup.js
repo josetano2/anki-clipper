@@ -1,0 +1,94 @@
+import { getDeckNames, getTemplates } from "./script/connect-anki.js";
+
+const setupAnki = async () => {
+  await deckSetup();
+  await templateSetup();
+};
+
+const deckSetup = async () => {
+  const decks = await getDeckNames();
+
+  if (!Array.isArray(decks)) {
+    return;
+  }
+
+  const form = document.getElementById("form");
+
+  const container = document.createElement("div");
+  container.className = "form-container";
+
+  const label = document.createElement("label");
+  label.className = "form-label";
+  label.textContent = "Deck Name:";
+
+  const select = document.createElement("select");
+  select.name = "deck";
+  select.id = "deckSelect";
+
+  decks.forEach((deck) => {
+    const option = document.createElement("option");
+    option.value = deck;
+    option.textContent = deck;
+    select.appendChild(option);
+  });
+
+  select.addEventListener("change", () => {
+    const selectedDeck = select.value;
+    chrome.storage.local.set({ selectedDeck });
+  });
+
+  chrome.storage.local.get("selectedDeck", (result) => {
+    if (result.selectedDeck) {
+      select.value = result.selectedDeck;
+    }
+  });
+
+  container.appendChild(label);
+  container.appendChild(select);
+  form.appendChild(container);
+};
+
+const templateSetup = async () => {
+  const templates = await getTemplates();
+
+  if (!Array.isArray(templates)) {
+    return;
+  }
+
+  const form = document.getElementById("form");
+
+  const container = document.createElement("div");
+  container.className = "form-container";
+
+  const label = document.createElement("label");
+  label.className = "form-label";
+  label.textContent = "Deck Template:";
+
+  const select = document.createElement("select");
+  select.name = "deck";
+  select.id = "deckSelect";
+
+  templates.forEach((template) => {
+    const option = document.createElement("option");
+    option.value = template;
+    option.textContent = template;
+    select.appendChild(option);
+  });
+
+  select.addEventListener("change", () => {
+    const selectedTemplate = select.value;
+    chrome.storage.local.set({ selectedTemplate });
+  });
+
+  chrome.storage.local.get("selectedTemplate", (result) => {
+    if (result.selectedTemplate) {
+      select.value = result.selectedTemplate;
+    }
+  });
+
+  container.appendChild(label);
+  container.appendChild(select);
+  form.appendChild(container);
+};
+
+setupAnki();

@@ -16,7 +16,7 @@ chrome.contextMenus.onClicked.addListener((item) => {
     const selectedText = item.selectionText;
     
     /**
-     * Insert to the last anki created card on the deck
+     * TODO: Insert to the last anki created card on the deck
      */
   }
 });

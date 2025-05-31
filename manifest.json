@@ -3,7 +3,7 @@
   "description": "A tool to mine sentences and insert it into Anki.",
   "version": "1.1",
   "manifest_version": 3,
-  "permissions": ["contextMenus", "scripting", "activeTab"],
+  "permissions": ["contextMenus", "scripting", "activeTab", "storage"],
   "background": {
     "service_worker": "anki.js",
     "type": "module"

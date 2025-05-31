@@ -1,0 +1,21 @@
+body {
+  width: 350px;
+}
+
+select {
+  max-width: 200px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
