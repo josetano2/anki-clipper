@@ -24,6 +24,6 @@ export const fetchNoteIdFromCardId = async () => {
 };
 
 export const addNewSentence = async (selectedSentence) => {
-    const id = await fetchLatestCardId()
-    await addSelectedSentenceToTheLastCreatedCard(id, selectedSentence)
-}
+  const id = await fetchLatestCardId();
+  await addSelectedSentenceToTheLastCreatedCard(id, selectedSentence);
+};

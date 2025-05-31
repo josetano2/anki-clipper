@@ -1,4 +1,8 @@
-import { addNewSentence, fetchLatestCardId, fetchNoteIdFromCardId } from "./script/anki-controller.js";
+import {
+  addNewSentence,
+  fetchLatestCardId,
+  fetchNoteIdFromCardId,
+} from "./script/anki-controller.js";
 import { MENU } from "./script/var.js";
 
 chrome.runtime.onInstalled.addListener(async () => {
@@ -18,6 +22,6 @@ chrome.contextMenus.onClicked.addListener((item) => {
     /**
      * TODO: Insert to the last anki created card on the deck
      */
-    addNewSentence(selectedText)
+    addNewSentence(selectedText);
   }
 });

@@ -58,7 +58,6 @@ export async function getLatestCardId() {
       }),
     });
     const data = await response.json();
-    console.log(data.result[0])
     return data.result[0];
   } catch (error) {
     console.error(error);
@@ -81,7 +80,6 @@ export async function getNoteId(cardId) {
       }),
     });
     const data = await response.json();
-    console.log(data);
     return data.result;
   } catch (error) {
     console.error(error);
@@ -93,7 +91,7 @@ export async function addSelectedSentenceToTheLastCreatedCard(
   selectedSentence
 ) {
   try {
-    const response = await fetch(conn, {
+    await fetch(conn, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +109,6 @@ export async function addSelectedSentenceToTheLastCreatedCard(
         },
       }),
     });
-    console.log(response);
   } catch (error) {
     console.error(error);
   }
