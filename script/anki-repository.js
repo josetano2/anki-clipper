@@ -58,6 +58,7 @@ export async function getLatestCardId() {
       }),
     });
     const data = await response.json();
+    data.result = data.result.reverse();
     return data.result[0];
   } catch (error) {
     console.error(error);
