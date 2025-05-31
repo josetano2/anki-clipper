@@ -1,4 +1,4 @@
-import { getDeckNames, getTemplates } from "./script/connect-anki.js";
+import { fetchDeckNames, fetchTemplates } from "./script/anki-controller.js";
 
 const setupAnki = async () => {
   await deckSetup();
@@ -6,7 +6,7 @@ const setupAnki = async () => {
 };
 
 const deckSetup = async () => {
-  const decks = await getDeckNames();
+  const decks = await fetchDeckNames();
 
   if (!Array.isArray(decks)) {
     return;
@@ -49,7 +49,7 @@ const deckSetup = async () => {
 };
 
 const templateSetup = async () => {
-  const templates = await getTemplates();
+  const templates = await fetchTemplates();
 
   if (!Array.isArray(templates)) {
     return;
