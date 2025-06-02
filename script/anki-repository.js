@@ -35,7 +35,7 @@ export async function getTemplates() {
     });
 
     const data = await response.json();
-    return data.result?.[0];
+    return data.result || [];
   } catch (error) {
     console.error(error);
     return [];

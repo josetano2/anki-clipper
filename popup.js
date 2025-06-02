@@ -9,6 +9,7 @@ const deckSetup = async () => {
   const decks = await fetchDeckNames();
 
   if (!Array.isArray(decks)) {
+    console.error('Decks is not an array:', decks);
     return;
   }
 
@@ -52,6 +53,7 @@ const templateSetup = async () => {
   const templates = await fetchTemplates();
 
   if (!Array.isArray(templates)) {
+    console.error('Templates is not an array:', templates);
     return;
   }
 
