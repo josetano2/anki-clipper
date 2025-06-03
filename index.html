@@ -3,12 +3,26 @@
   <head>
     <title>Anki Clipper</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <div class="container">
-      <h2 class="title">Anki Clipper</h2>
-      <form id="form" class="settings-form"></form>
+      <div class="header">
+        <h2 class="title">Anki Clipper</h2>
+        <p class="subtitle">Sentence Mining</p>
+      </div>
+      <div class="content">
+        <form id="form" class="settings-form"></form>
+      </div>
+      <div class="footer">
+        <div class="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Connected to Anki</span>
+        </div>
+      </div>
     </div>
     <script src="popup.js" type="module"></script>
   </body>

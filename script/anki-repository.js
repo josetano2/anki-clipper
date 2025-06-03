@@ -1,5 +1,25 @@
 import { conn } from "./var.js";
 
+export async function checkConnection() {
+  try {
+    const response = await fetch(conn, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        action: "version",
+        version: 6
+      }),
+    });
+    const data = await response.json();
+    return !!data.result;
+  } catch (error) {
+    console.error('Anki connection error:', error);
+    return false;
+  }
+}
+
 export async function getDeckNames() {
   try {
     const response = await fetch(conn, {

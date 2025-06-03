@@ -1,8 +1,25 @@
-import { fetchDeckNames, fetchTemplates } from "./script/anki-controller.js";
+import { fetchDeckNames, fetchTemplates, checkAnkiConnection } from "./script/anki-controller.js";
 
 const setupAnki = async () => {
+  await updateConnectionStatus();
   await deckSetup();
   await templateSetup();
+};
+
+const updateConnectionStatus = async () => {
+  const isConnected = await checkAnkiConnection();
+  const statusDot = document.querySelector('.status-dot');
+  const statusText = document.querySelector('.status-text');
+
+  if (isConnected) {
+    statusDot.classList.remove('disconnected');
+    statusText.classList.remove('disconnected');
+    statusText.textContent = 'Connected to Anki';
+  } else {
+    statusDot.classList.add('disconnected');
+    statusText.classList.add('disconnected');
+    statusText.textContent = 'Anki not connected';
+  }
 };
 
 const deckSetup = async () => {
@@ -68,7 +85,7 @@ const templateSetup = async () => {
 
   const select = document.createElement("select");
   select.name = "deck";
-  select.id = "deckSelect";
+  select.id = "templateSelect";
 
   templates.forEach((template) => {
     const option = document.createElement("option");

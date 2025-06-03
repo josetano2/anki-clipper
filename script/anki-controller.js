@@ -4,7 +4,12 @@ import {
   getLatestCardId,
   getNoteId,
   addSelectedSentenceToTheLastCreatedCard,
+  checkConnection,
 } from "./anki-repository.js";
+
+export const checkAnkiConnection = async () => {
+  return await checkConnection();
+};
 
 export const fetchDeckNames = async () => {
   return await getDeckNames();
